@@ -8,10 +8,12 @@ const pathLibrary = require ('path')
  const readFile = (path,type)=>{   
     return new Promise ((resolve,reject)=>{
      fs.readFile(path,type, (error,content) =>{
-        pathLibrary.extname(path)!='.md' ? reject(error) : resolve(content);
-        
+         //let error =console.log('Porfavor ingresa un archivo .md')
+         pathLibrary.extname(path)!='.md' ? reject(error) : resolve(content);
       });
+      
     });
+    
   }
   
  readFile(process.argv[2], 'utf-8')
@@ -29,7 +31,10 @@ const pathLibrary = require ('path')
       
   });
   })
-
+ 
+  .catch(error =>{
+    console.log('Por favor ingresa un archivo .md')
+})
   
 
 
