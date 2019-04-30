@@ -27,7 +27,7 @@ algunas estadísticas.
 Las herramientas y dependencias implementadas para la construcción de esta Librería fueron las siguientes:
 
 | **Lenguaje**
-------------------------------
+| ------------------------------
 | JavaScript ECMAScript 6
 | **Ejecución**
 | Node  
@@ -45,6 +45,7 @@ Las herramientas y dependencias implementadas para la construcción de esta Libr
 Podemos instalar directamente desde GitHub con el comando:
 
 `npm install taphie-md-links`
+
 Sí se quiere implementar globalmente. Puede instalarse via:
 
 `npm install --global taphie-md-links`
@@ -64,9 +65,11 @@ manera a través de la terminal:
 `md-links <path-to-file> [options]`
 
 Ejemplo:
+
 ![alt-texr](Images/first-command.png)
 
 Resultado:
+
 ![alt-texr](Images/result.png)
 
 El comportamiento por defecto no valida si las URLs responden ok o no, solo debe identifica el archivo markdown (a partir de la ruta que recibe como argumento), analizar el archivo Markdown e imprimir los links que vaya encontrando, junto con la ruta del archivo donde aparece y el texto que hay dentro del link (truncado a 50 caracteres).
@@ -85,6 +88,7 @@ Ejemplo:
 ![alt-texr](Images/commad-validate.png)
 
 Resultado:
+
 ![alt-texr](Images/result-validate.png)
 
 Vemos que el _output_ en este caso incluye la el código del estatus de
