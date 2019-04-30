@@ -1,6 +1,7 @@
-#!/usr/bin/env node                             /*esta linea sirve para indicar que es un programa JS o no es un script de shell y que debe usar un intérprete diferente*/
+#!/usr/bin/env node                             
+/*esta linea sirve para indicar que es un programa JS o no es un script de shell y que debe usar un intérprete diferente*/
 /*De aquí exporto la función md-links e imprimo en consola */
-/*Aqqí debe de revisar si el archivo es .md, debe revisar si le da la opción
+/*Aquí debe de revisar si el archivo es .md, debe revisar si le da la opción
 validate , status , las dos o ninguna*/
 
 const readFileInfo=require("./src/md-links");
