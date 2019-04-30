@@ -6,7 +6,8 @@
     "jest": "^24.7.1",
     "link": "^0.1.5",
     "markdown-link-extractor": "^1.2.0",
-    "node-fetch": "^2.3.0"
+    "node-fetch": "^2.3.0",
+    "user": "0.0.0"
   },
   "scripts": {
     "test": "jest --coverage"

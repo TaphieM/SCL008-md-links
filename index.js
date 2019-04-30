@@ -1,8 +1,6 @@
 #!/usr/bin/env node                             
 /*esta linea sirve para indicar que es un programa JS o no es un script de shell y que debe usar un intérprete diferente*/
 /*De aquí exporto la función md-links e imprimo en consola */
-/*Aquí debe de revisar si el archivo es .md, debe revisar si le da la opción
-validate , status , las dos o ninguna*/
 
 const readFileInfo=require("./src/md-links");
 const fetch = require('node-fetch');
@@ -12,15 +10,15 @@ const markdownLinkExtractor = require('markdown-link-extractor')
 readFileInfo.readFileInfo(process.argv[2], 'utf-8')      /*llamamos la función, el primer parametro es la ruta y el segundo el código para que no lo muestre en binario*/
 .then(res => {
     
-     let links = markdownLinkExtractor(res)    /*extrae los links*/
-     let linkInfo = [];                         /*arreglo vacío que contendra todos los links con la informaciñon requerida*/
+     let links = markdownLinkExtractor(res)              /*extrae los links*/
+     let linkInfo = [];                                  /*arreglo vacío que contendra todos los links con la informaciñon requerida*/
 
 
    if(process.argv[3]==='--validate'){  
-     links.forEach((link)=>{                    /*recorremos cada link*/
-     fetch(link)                                /*extraemos información de cada link*/
+     links.forEach((link)=>{                             /*recorremos cada link*/
+     fetch(link)                                         /*llamamos a la API para extraer información de cada link*/
        .then((links) =>{
-        linkInfo.push({                         /*con el push generamos un objeto con las key requeridas en el readme*/
+        linkInfo.push({                                  /*con el push generamos un objeto con las key requeridas en el readme*/
           href: link[0],
           text: link[1].substr(0,50),
           file: process.argv[2],
@@ -28,7 +26,7 @@ readFileInfo.readFileInfo(process.argv[2], 'utf-8')      /*llamamos la función,
           statusText: links.statusText
         })
 
-        console.log(linkInfo);              /*imprimimos en consola el resultado*/  
+        console.log(linkInfo);                          /*imprimimos en consola el resultado*/  
     }) 
       .catch(error =>{
         console.log(error.message)
@@ -37,17 +35,17 @@ readFileInfo.readFileInfo(process.argv[2], 'utf-8')      /*llamamos la función,
     
 });
 }else{
-links.forEach((link)=>{                    /*recorremos cada link*/
-  fetch(link)                                /*extraemos información de cada link*/
+links.forEach((link)=>{                                 
+  fetch(link)                                
     .then((links) =>{
-     linkInfo.push({                         /*con el push generamos un objeto con las key requeridas en el readme*/
+     linkInfo.push({                         
        href: link[0],
        text: link[1].substr(0,50),
        file: process.argv[2],
 
      })
 
-     console.log(linkInfo);              /*imprimimos en consola el resultado*/  
+     console.log(linkInfo);               
  }) 
    .catch(error =>{
      console.log(error.message)
