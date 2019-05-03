@@ -1,7 +1,7 @@
 /*Librerias que usamos de node.js*/
 const fs = require('fs');   
-
 const pathLibrary = require ('path')
+
 
 /*Función que va a leer la ruta ingresada por el usuario e identificar si es un md*/
  const readFileInfo = (path,type)=>{   

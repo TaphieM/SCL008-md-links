@@ -6,6 +6,10 @@ const readFileInfo=require("./src/md-links");
 const fetch = require('node-fetch');
 const markdownLinkExtractor = require('markdown-link-extractor')
 
+/* if(require.main===module){
+  readFileInfo(process.argv[2], {validate:true})
+  .then(console.log);
+} */
 
 readFileInfo.readFileInfo(process.argv[2], 'utf-8')      /*llamamos la función, el primer parametro es la ruta y el segundo el código para que no lo muestre en binario*/
 .then(res => {
@@ -14,7 +18,7 @@ readFileInfo.readFileInfo(process.argv[2], 'utf-8')      /*llamamos la función,
      let linkInfo = [];                                  /*arreglo vacío que contendra todos los links con la informaciñon requerida*/
 
 
-   if(process.argv[3]==='--validate'){  
+   if(require.main===process.argv[3]==='--validate'){    /* se agrega el require.main para que no repita los valores cuando se agrega como modulo*/
      links.forEach((link)=>{                             /*recorremos cada link*/
      fetch(link)                                         /*llamamos a la API para extraer información de cada link*/
        .then((links) =>{
@@ -28,17 +32,17 @@ readFileInfo.readFileInfo(process.argv[2], 'utf-8')      /*llamamos la función,
 
         console.log(linkInfo);                          /*imprimimos en consola el resultado*/  
     }) 
-      .catch(error =>{
+       .catch(error =>{
         console.log(error.message)
-        //reject(error)
+       
     })
     
-});
-}else{
-links.forEach((link)=>{                                 
-  fetch(link)                                
-    .then((links) =>{
-     linkInfo.push({                         
+    });
+  }else{
+      links.forEach((link)=>{                                 
+      fetch(link)                                
+       .then((links) =>{
+       linkInfo.push({                         
        href: link[0],
        text: link[1].substr(0,50),
        file: process.argv[2],
@@ -47,9 +51,9 @@ links.forEach((link)=>{
 
      console.log(linkInfo);               
  }) 
-   .catch(error =>{
+     .catch(error =>{
      console.log(error.message)
-     //reject(error)
+    
  })
  
 });
@@ -57,6 +61,23 @@ links.forEach((link)=>{
 }
 })
 
+
+
 .catch(error =>{
   console.log('Por favor ingresa un archivo .md') 
 })
+
+/*Implementando función stats
+
+links.forEach((element) => {
+  if (!LinksUnique.includes(element)) {
+      LinksUnique.push(element);
+  }
+})
+stats.LinksUnique = LinksUnique.length;
+console.log(fileIn)
+console.log(stats)
+
+.catch(err => {
+console.log(err);
+})*/

@@ -12,6 +12,7 @@ describe('readFileInfo', () => {
   it('deberia retornar error si el archivo no es .md',()=>{
       expect(readFileInfo.readFileInfo('../test/Files2Test/test.js','utf-8')).resolves.toEqual(['Por favor ingresa un archivo .md']);
     }); 
+    
   })
   
 
