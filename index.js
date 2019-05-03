@@ -4,7 +4,8 @@
 
 const readFileInfo=require("./src/md-links");
 const fetch = require('node-fetch');
-const markdownLinkExtractor = require('markdown-link-extractor')
+const markdownLinkExtractor = require('markdown-link-extractor');
+const chalk = require('chalk');
 
 /* if(require.main===module){
   readFileInfo(process.argv[2], {validate:true})
@@ -23,14 +24,14 @@ readFileInfo.readFileInfo(process.argv[2], 'utf-8')      /*llamamos la función,
      fetch(link)                                         /*llamamos a la API para extraer información de cada link*/
        .then((links) =>{
         linkInfo.push({                                  /*con el push generamos un objeto con las key requeridas en el readme*/
-          href: link[0],
+          href:link[0],
           text: link[1].substr(0,50),
           file: process.argv[2],
           status: links.status,
           statusText: links.statusText
         })
 
-        console.log(linkInfo);                          /*imprimimos en consola el resultado*/  
+        console.log(chalk.bgMagenta('linkInfo'));                          /*imprimimos en consola el resultado*/  
     }) 
        .catch(error =>{
         console.log(error.message)
@@ -49,7 +50,7 @@ readFileInfo.readFileInfo(process.argv[2], 'utf-8')      /*llamamos la función,
 
      })
 
-     console.log(linkInfo);               
+     console.log(chalk.bgMagenta('linkInfo'));               
  }) 
      .catch(error =>{
      console.log(error.message)
